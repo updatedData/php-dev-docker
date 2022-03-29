@@ -11,7 +11,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
         libxslt-dev \
         wget \
         htop
-RUN docker-php-ext-install  pdo_mysql bcmath dom intl zip xsl simplexml sysvsem pcntl gd
+RUN docker-php-ext-install  pdo_mysql bcmath dom intl zip xsl simplexml sysvsem pcntl gd mysqli
 COPY fpm.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 RUN pecl install redis xdebug && docker-php-ext-enable xdebug redis \
     && echo 'xdebug.client_port=9001' >> /usr/local/etc/php/php.ini \
