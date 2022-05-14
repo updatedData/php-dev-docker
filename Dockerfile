@@ -9,11 +9,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
         libpng-dev \
         libzip-dev \
         libxslt-dev \
+        imagemagick\
+        libmagickwand-dev \
         wget \
         htop
 RUN docker-php-ext-install  pdo_mysql bcmath dom intl zip xsl simplexml sysvsem pcntl gd mysqli
 COPY fpm.conf /usr/local/etc/php-fpm.d/zz-docker.conf
-RUN pecl install redis xdebug && docker-php-ext-enable xdebug redis \
+RUN pecl install redis xdebug imagick && docker-php-ext-enable xdebug redis imagick \
     && echo 'xdebug.client_port=9001' >> /usr/local/etc/php/php.ini \
     && echo 'xdebug.mode=debug' >> /usr/local/etc/php/php.ini \
     && echo "xdebug.client_host = host.docker.internal" >> /usr/local/etc/php/php.ini
