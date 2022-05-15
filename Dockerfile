@@ -12,10 +12,13 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
         imagemagick\
         libmagickwand-dev \
         wget \
-        htop
+        htop \
+        python3 \
+        python3-pip
 RUN docker-php-ext-install  pdo_mysql bcmath dom intl zip xsl simplexml sysvsem pcntl gd mysqli
 COPY fpm.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 RUN pecl install redis xdebug imagick && docker-php-ext-enable xdebug redis imagick \
-    && echo 'xdebug.client_port=9001' >> /usr/local/etc/php/php.ini \
+    && echo 'xdebug.client_port=9003' >> /usr/local/etc/php/php.ini \
     && echo 'xdebug.mode=debug' >> /usr/local/etc/php/php.ini \
     && echo "xdebug.client_host = host.docker.internal" >> /usr/local/etc/php/php.ini
+RUN pip install yacron
