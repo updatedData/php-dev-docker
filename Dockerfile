@@ -15,7 +15,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
         wget \
         htop \
         python3 \
-        python3-pip
+        python3-pip \
+        chromium
 RUN docker-php-ext-install  pdo_mysql bcmath dom intl zip xsl simplexml sysvsem pcntl gd mysqli
 COPY fpm.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 RUN pecl install redis xdebug imagick && docker-php-ext-enable xdebug redis imagick \
