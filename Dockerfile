@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.2-fpm-bullseye
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && apt-get install -y \
