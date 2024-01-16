@@ -2,6 +2,8 @@ name: Publish to docker hub
 on:
   push:
     branches: ["main"]
+  schedule:
+    - cron:  '0 0 * * 0' #once every week
     
 jobs:
   push_to_registry:
