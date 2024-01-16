@@ -16,7 +16,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
         htop \
         python3 \
         python3-pip
-RUN docker-php-ext-install  pdo_mysql bcmath dom intl zip xsl simplexml sysvsem pcntl gd mysqli sockets exif
+RUN docker-php-ext-install mbstring pdo_mysql bcmath dom intl zip xsl simplexml sysvsem pcntl gd mysqli sockets exif
 COPY fpm.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 RUN pecl install redis xdebug imagick && docker-php-ext-enable xdebug redis imagick \
     && echo 'xdebug.client_port=9003' >> /usr/local/etc/php/php.ini \
