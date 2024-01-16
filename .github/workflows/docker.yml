@@ -29,5 +29,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: php-dev:latest
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: endlezz/php-dev:latest
