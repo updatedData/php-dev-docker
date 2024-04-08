@@ -15,7 +15,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
         wget \
         htop \
         python3 \
-        python3-pip \
+        python3-pip
     
 RUN docker-php-ext-install pdo_mysql bcmath dom intl zip xsl simplexml sysvsem pcntl gd mysqli sockets exif
 
