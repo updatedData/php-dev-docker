@@ -21,5 +21,8 @@ COPY fpm.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 RUN pecl install redis xdebug imagick && docker-php-ext-enable xdebug redis imagick \
     && echo 'xdebug.client_port=9003' >> /usr/local/etc/php/php.ini \
     && echo 'xdebug.mode=debug' >> /usr/local/etc/php/php.ini \
-    && echo "xdebug.client_host = host.docker.internal" >> /usr/local/etc/php/php.ini
+    && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/php.ini \
+    && echo "upload_max_filesize=2G" >> /usr/local/etc/php/php.ini \
+    && echo "memory_limit=4G" >> /usr/local/etc/php/php.ini \
+    && echo "post_max_size=3G" >> /usr/local/etc/php/php.ini
 RUN pip install yacron
