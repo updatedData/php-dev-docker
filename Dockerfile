@@ -1,4 +1,4 @@
-FROM php:8.2-fpm-bullseye
+FROM php:8.3-fpm-bullseye
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && apt-get install -y \
@@ -21,7 +21,7 @@ RUN docker-php-ext-install pdo_mysql bcmath dom intl zip xsl simplexml sysvsem p
 
 COPY fpm.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 
-RUN pecl install redis xdebug imagick && docker-php-ext-enable xdebug redis imagick \
+RUN pecl install redis xdebug imagick mongodb && docker-php-ext-enable xdebug redis imagick mongodb \
     && echo 'xdebug.client_port=9003' >> /usr/local/etc/php/php.ini \
     && echo 'xdebug.mode=debug' >> /usr/local/etc/php/php.ini \
     && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/php.ini \
