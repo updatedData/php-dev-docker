@@ -22,7 +22,7 @@ RUN docker-php-ext-install pdo_mysql bcmath soap dom intl zip xsl simplexml sysv
 COPY fpm.conf /usr/local/etc/php-fpm.d/zz-docker.conf
 
 RUN pecl install redis xdebug mongodb
-RUN docker-php-ext-enable xdebug redis mongodb
+RUN docker-php-ext-enable xdebug redis mongodb soap
 RUN echo 'xdebug.client_port=9003' >> /usr/local/etc/php/php.ini \
     && echo 'xdebug.mode=debug' >> /usr/local/etc/php/php.ini \
     && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/php.ini \
